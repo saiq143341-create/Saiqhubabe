@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Birthday</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section id="intro">
-  <h1 id="typing"></h1>
-
-  <!-- HEART SVG -->
-  <svg id="heartSvg" viewBox="0 0 512 512">
-    <path id="heartPath"
-      d="M256 464s-192-112-192-272c0-64 48-112 112-112
-         48 0 80 32 80 32s32-32 80-32
-         c64 0 112 48 112 112
-         0 160-192 272-192 272z"/>
-  </svg>
-</section>
-
-<!-- ENVELOPE -->
-<section id="envelopeSection" class="hidden">
-  <div class="envelope">
-    <div class="letter">
-      <h2>Happy Birthday My Girl 🎂</h2>
-      <p id="cardText"></p>
-      <button id="next">➡️</button>
+    <div id="stage-1" class="stage">
+        <div class="typing-intro" id="intro-text"></div>
+        <svg class="heart-svg" viewBox="0 0 200 200">
+            <path class="heart-path" d="M100,180 c-50-40-90-70-90-110 a40,40 0 0,1 80,-15 a40,40 0 0,1 80,15 c0,40-40,70-90,110 Z" />
+        </svg>
     </div>
-    <div class="top"></div>
-    <div class="bottom"></div>
-  </div>
-</section>
 
-<!-- VIDEO -->
-<section id="videoSection" class="hidden">
-  <video controls autoplay>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-</section>
+    <div id="stage-2" class="stage" style="display: none;">
+        <div class="envelope-container">
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope-top"></div>
+                <div class="card" id="birthday-card">
+                    <div id="card-content" class="card-text"></div>
+                    <button class="btn-next" id="btn-show-video">➔</button>
+                </div>
+                <div class="envelope-front"></div>
+            </div>
+        </div>
+    </div>
 
-<script src="script.js"></script>
+    <div id="stage-3" class="stage" style="display: none;">
+        <div class="video-wrapper">
+            <video id="birthday-video" controls>
+                <source src="birthday-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
