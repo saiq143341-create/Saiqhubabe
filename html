@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration | Joy & Surprises</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ffccd5;
+            --accent: #c9184a;
+            --soft-pink: #fff0f3;
+            --text: #590d22;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-pink);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor takes over */
+        }
+
+        /* --- Heart Cursor Effect --- */
+        .cursor-heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            clip-path: path('M10 20 L8.5 18.5 C3.5 14 0 10.5 0 6.5 C0 3.5 2.5 1 5.5 1 C7.2 1 8.8 1.8 10 3.1 C11.2 1.8 12.8 1 14.5 1 C17.5 1 20 3.5 20 6.5 C20 10.5 16.5 14 11.5 18.5 L10 20 Z');
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* --- Cards Section --- */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.2);
+        }
+
+        .card i {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* --- Animations --- */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .cursor-heart { display: none; }
+            body { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-heart" id="cursor"></div>
+    <div class="floating-hearts" id="hearts-bg"></div>
+
+    <section class="hero">
+        <i data-lucide="party-popper" size="64" style="color: #ff4d6d; margin-bottom: 20px;"></i>
+        <h1>Happy Birthday!</h1>
+        <p>Welcome to the Birthday Celebration Experience. Enjoy a lively opening animation designed to capture the spirit of joy, surprises, and memories.</p>
+    </section>
+
+    <div class="container">
+        <div class="card">
+            <i data-lucide="heart" size="40"></i>
+            <h3>Heartfelt Moments</h3>
+            <p>Every second today is a gift. Let's make it count with memories that last forever.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="sparkles" size="40"></i>
+            <h3>Curated Visuals</h3>
+            <p>Designed with love and soft animations to make your screen feel as bright as your smile.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="gift" size="40"></i>
+            <h3>Special Surprises</h3>
+            <p>Everything today is crafted specifically to make this day truly unforgettable.</p>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: var(--accent);">
+        <p>Made with ❤️ for a special day</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Cursor Follower
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Background Hearts Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.opacity = Math.random();
+            heart.style.transition = `transform ${Math.random() * 3 + 2}s linear, opacity 2s`;
+            
+            document.getElementById('hearts-bg').appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+            }, 100);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
