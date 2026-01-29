@@ -1,80 +1,130 @@
+:root {
+    --soft-pink: #fce4ec;
+    --deep-pink: #ff80ab;
+    --accent-pink: #f06292;
+    --white: #ffffff;
+}
+
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(#ffd6e8, #fff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: cursive;
+    background: radial-gradient(circle, var(--white) 0%, var(--soft-pink) 100%);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    overflow: hidden;
 }
 
-.hidden { display: none; }
-
-#intro {
-  text-align: center;
+.stage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 1s ease;
 }
 
-#typing {
-  font-size: 28px;
-  color: #e91e63;
+/* Heart Animation */
+.heart-svg {
+    width: 180px;
+    height: 180px;
+    margin-top: 20px;
 }
 
-#heartSvg {
-  width: 180px;
-  margin-top: 20px;
-}
-
-#heartPath {
-  fill: none;
-  stroke: #ff4d6d;
-  stroke-width: 8;
-  stroke-dasharray: 1500;
-  stroke-dashoffset: 1500;
-  animation: drawHeart 4s forwards;
+.heart-path {
+    fill: none;
+    stroke: var(--deep-pink);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawHeart 4s ease-in-out forwards;
 }
 
 @keyframes drawHeart {
-  to { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 0; }
 }
 
-/* ENVELOPE */
-.envelope {
-  width: 260px;
-  position: relative;
+/* Typing Intro */
+.typing-intro {
+    font-size: 1.8rem;
+    color: var(--accent-pink);
+    min-height: 2rem;
 }
 
-.letter {
-  background: #fff0f5;
-  padding: 20px;
-  border-radius: 10px;
-  position: absolute;
-  top: -140px;
-  width: 100%;
-  text-align: center;
-  animation: slideUp 2s forwards;
+/* Envelope Styles */
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: var(--accent-pink);
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    perspective: 1000px;
 }
 
-@keyframes slideUp {
-  to { top: -180px; }
+.envelope-top {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid var(--deep-pink);
+    transform-origin: top;
+    transition: transform 0.8s ease;
 }
 
-.top {
-  width: 0;
-  height: 0;
-  border-left: 130px solid transparent;
-  border-right: 130px solid transparent;
-  border-bottom: 90px solid #ff8fab;
+.envelope-front {
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid var(--accent-pink);
+    border-radius: 0 0 10px 10px;
 }
 
-.bottom {
-  width: 260px;
-  height: 140px;
-  background: #ffb3c6;
+.card {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background: white;
+    z-index: 2;
+    padding: 20px;
+    border-radius: 5px;
+    transition: transform 1s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-button {
-  margin-top: 10px;
-  font-size: 18px;
-  border-radius: 50%;
-  padding: 8px;
+.open .envelope-top { transform: rotateX(180deg); z-index: 1; }
+.open .card { transform: translateY(-130px); }
+
+/* Video Stage */
+.video-wrapper {
+    width: 90%;
+    max-width: 500px;
+}
+
+video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.btn-next {
+    background: var(--deep-pink);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    align-self: center;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
 }
