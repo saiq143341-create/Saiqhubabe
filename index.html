@@ -9,30 +9,28 @@
 <body>
 
     <div id="stage-1" class="stage">
-        <div class="typing-intro" id="intro-text"></div>
+        <div id="intro-text" class="typing-intro"></div>
         <svg class="heart-svg" viewBox="0 0 200 200">
             <path class="heart-path" d="M100,180 c-50-40-90-70-90-110 a40,40 0 0,1 80,-15 a40,40 0 0,1 80,15 c0,40-40,70-90,110 Z" />
         </svg>
     </div>
 
-    <div id="stage-2" class="stage" style="display: none;">
-        <div class="envelope-container">
-            <div class="envelope-wrapper" id="envelope">
-                <div class="envelope-top"></div>
-                <div class="card" id="birthday-card">
-                    <div id="card-content" class="card-text"></div>
-                    <button class="btn-next" id="btn-show-video">➔</button>
-                </div>
-                <div class="envelope-front"></div>
+    <div id="stage-2" class="stage" style="display: none; opacity: 0;">
+        <div class="envelope-wrapper" id="envelope">
+            <div class="envelope-top"></div>
+            <div class="card" id="birthday-card">
+                <div id="card-content" class="card-text"></div>
+                <button class="btn-next" id="btn-show-video">➔</button>
             </div>
+            <div class="envelope-front"></div>
         </div>
+        <p style="margin-top: 20px; color: #f06292;">(Click the envelope to open)</p>
     </div>
 
-    <div id="stage-3" class="stage" style="display: none;">
+    <div id="stage-3" class="stage" style="display: none; opacity: 0;">
         <div class="video-wrapper">
             <video id="birthday-video" controls>
                 <source src="birthday-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
         </div>
     </div>
